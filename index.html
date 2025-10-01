@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Miniawy - عالمك التقني المتكامل</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts (Cairo) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom Styles and Tailwind Config -->
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            scroll-behavior: smooth; /* For smooth scrolling */
+        }
+        /* Simple animation for text */
+        .fade-in-up {
+            animation: fadeInUp 1s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        /* Ensure full height sections */
+        .h-screen-section {
+            height: 100vh;
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary': '#0D1B2A',
+                        'secondary': '#1B263B',
+                        'accent': '#415A77',
+                        'light': '#E0E1DD',
+                        'highlight': '#778DA9',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-primary text-light">
+
+    <!-- Header & Navigation -->
+    <header class="bg-secondary/80 backdrop-blur-sm sticky top-0 z-50 shadow-lg">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#home" class="flex items-center space-x-3 space-x-reverse text-2xl font-bold text-white">
+                <img src="logo.jpg" alt="شعار Miniawy" class="h-10 w-auto">
+                <span>Miniawy</span>
+            </a>
+            <div class="hidden md:flex space-x-8 space-x-reverse">
+                <a href="#home" class="hover:text-highlight transition duration-300">الرئيسية</a>
+                <a href="#pc-builds" class="hover:text-highlight transition duration-300">تجميعات الكمبيوتر</a>
+                <a href="#history" class="hover:text-highlight transition duration-300">رحلة في التاريخ</a>
+                <a href="#gaming" class="hover:text-highlight transition duration-300">ألعاب الفيديو</a>
+                <a href="#web-design" class="hover:text-highlight transition duration-300">تصميم المواقع</a>
+                <a href="booking.html" class="hover:text-highlight transition duration-300">احجز الآن</a>
+            </div>
+            <!-- Audio Control Button -->
+            <button id="audio-toggle" class="text-white focus:outline-none hover:text-highlight transition-colors duration-300" title="تشغيل/إيقاف الموسيقى">
+                <svg id="audio-on" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path></svg>
+                <svg id="audio-off" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2"></path></svg>
+            </button>
+            
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden">
+                <button id="menu-btn" class="text-white focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-secondary">
+            <a href="#home" class="block py-2 px-4 text-sm hover:bg-accent">الرئيسية</a>
+            <a href="#pc-builds" class="block py-2 px-4 text-sm hover:bg-accent">تجميعات الكمبيوتر</a>
+            <a href="#history" class="block py-2 px-4 text-sm hover:bg-accent">رحلة في التاريخ</a>
+            <a href="#gaming" class="block py-2 px-4 text-sm hover:bg-accent">ألعاب الفيديو</a>
+            <a href="#web-design" class="block py-2 px-4 text-sm hover:bg-accent">تصميم المواقع</a>
+            <a href="booking.html" class="block py-2 px-4 text-sm hover:bg-accent">احجز الآن</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="h-screen-section flex items-center justify-center relative overflow-hidden">
+            <video autoplay muted loop class="absolute inset-0 w-full h-full object-cover" poster="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=2070&auto=format&fit=crop">
+                <source src="الكبير كبير.m4v" type="video/mp4">
+                متصفحك لا يدعم الفيديو.
+            </video>
+            <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60"></div>
+            <div class="text-center text-white p-8">
+                <h1 class="text-5xl md:text-7xl font-bold mb-4 fade-in-up" style="animation-delay: 0.2s;">مرحباً بك في عالم Miniawy</h1>
+                <p class="text-lg md:text-xl max-w-2xl mx-auto mb-8 fade-in-up" style="animation-delay: 0.4s;">استكشف تجميعات الكمبيوتر، غُص في التاريخ، العب أحدث الألعاب، وصمم موقعك الخاص معنا.</p>
+                <a href="#pc-builds" class="bg-highlight hover:bg-accent text-white font-bold py-3 px-8 rounded-full transition duration-300 transform hover:scale-105 fade-in-up" style="animation-delay: 0.6s;">
+                    اكتشف أقسامنا
+                </a>
+            </div>
+        </section>
+
+        <!-- PC Builds Section -->
+        <section id="pc-builds" class="h-screen-section flex items-center justify-center relative overflow-hidden">
+            <video autoplay muted loop class="absolute inset-0 w-full h-full object-cover" poster="https://images.unsplash.com/photo-1593640408182-31c70c8268f5?q=80&w=1942&auto=format&fit=crop">
+                <source src="تجميعة الكمبيوتر.mp4" type="video/mp4">
+                متصفحك لا يدعم الفيديو.
+            </video>
+            <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60"></div>
+            <div class="text-center text-white p-8 max-w-3xl mx-auto">
+                <h2 class="text-4xl md:text-6xl font-bold mb-6 fade-in-up">تجميعات الكمبيوتر</h2>
+                <p class="text-lg md:text-2xl mb-8 fade-in-up" style="animation-delay: 0.2s;">أطلق العنان لقوة الأداء. نوفر لك أفضل القطع لتجميع جهاز أحلامك للألعاب والعمل.</p>
+                <a href="booking.html" class="bg-highlight hover:bg-accent text-white font-bold py-3 px-8 rounded-full transition duration-300 transform hover:scale-105 fade-in-up" style="animation-delay: 0.4s;">شاهد التجميعات</a>
+            </div>
+        </section>
+
+        <!-- History Section -->
+        <section id="history" class="h-screen-section flex items-center justify-center relative overflow-hidden">
+            <video autoplay muted loop class="absolute inset-0 w-full h-full object-cover" poster="https://images.unsplash.com/photo-1447023243362-62f7390b75ee?q=80&w=2070&auto=format&fit=crop">
+                <source src="التاريخ.mp4" type="video/mp4">
+                متصفحك لا يدعم الفيديو.
+            </video>
+            <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60"></div>
+            <div class="text-center text-white p-8 max-w-3xl mx-auto">
+                <h2 class="text-4xl md:text-6xl font-bold mb-6 fade-in-up">رحلة في التاريخ</h2>
+                <p class="text-lg md:text-2xl mb-8 fade-in-up" style="animation-delay: 0.2s;">اكتشف قصص الماضي التي شكلت عالمنا. قسم فريد يأخذك في رحلة عبر الزمن.</p>
+                <a href="booking.html" class="bg-highlight hover:bg-accent text-white font-bold py-3 px-8 rounded-full transition duration-300 transform hover:scale-105 fade-in-up" style="animation-delay: 0.4s;">ابدأ الرحلة</a>
+            </div>
+        </section>
+
+        <!-- Video Games Section -->
+        <section id="gaming" class="h-screen-section flex items-center justify-center relative overflow-hidden">
+            <video autoplay muted loop class="absolute inset-0 w-full h-full object-cover" poster="https://images.unsplash.com/photo-1580327344181-c1163d34e43c?q=80&w=1974&auto=format&fit=crop">
+                <source src="العاب.mp4" type="video/mp4">
+                متصفحك لا يدعم الفيديو.
+            </video>
+            <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60"></div>
+            <div class="text-center text-white p-8 max-w-3xl mx-auto">
+                <h2 class="text-4xl md:text-6xl font-bold mb-6 fade-in-up">عالم ألعاب الفيديو</h2>
+                <p class="text-lg md:text-2xl mb-8 fade-in-up" style="animation-delay: 0.2s;">مكتبة ضخمة من الألعاب في انتظارك. أحدث الإصدارات والكلاسيكيات الخالدة.</p>
+                <a href="booking.html" class="bg-highlight hover:bg-accent text-white font-bold py-3 px-8 rounded-full transition duration-300 transform hover:scale-105 fade-in-up" style="animation-delay: 0.4s;">تصفح الألعاب</a>
+            </div>
+        </section>
+
+        <!-- Web Design Section -->
+        <section id="web-design" class="h-screen-section flex items-center justify-center relative overflow-hidden">
+            <video autoplay muted loop class="absolute inset-0 w-full h-full object-cover" poster="https://images.unsplash.com/photo-1559028006-44a3a4f364df?q=80&w=1974&auto=format&fit=crop">
+                <source src="موقع.mp4" type="video/mp4">
+                متصفحك لا يدعم الفيديو.
+            </video>
+            <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60"></div>
+            <div class="text-center text-white p-8 max-w-3xl mx-auto">
+                <h2 class="text-4xl md:text-6xl font-bold mb-6 fade-in-up">تصميم وتطوير المواقع</h2>
+                <p class="text-lg md:text-2xl mb-8 fade-in-up" style="animation-delay: 0.2s;">حوّل فكرتك إلى واقع. نقدم خدمات تصميم مواقع احترافية تلبي طموحاتك.</p>
+                <a href="booking.html" class="bg-highlight hover:bg-accent text-white font-bold py-3 px-8 rounded-full transition duration-300 transform hover:scale-105 fade-in-up" style="animation-delay: 0.4s;">اطلب خدمتك</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-secondary py-8">
+        <div class="container mx-auto px-6 text-center text-accent">
+            <p>&copy; 2025 Miniawy. كل الحقوق محفوظة.</p>
+            <div class="flex justify-center space-x-4 space-x-reverse mt-4">
+                <a href="https://www.facebook.com/ahmed.salah.244465" class="hover:text-white" target="_blank">فيسبوك</a>
+                <a href="https://www.youtube.com/@Miniawy5814" class="hover:text-white" target="_blank">يوتيوب</a>
+                <a href="https://www.tiktok.com/@ahmedsalahminyawi" class="hover:text-white" target="_blank">تيك توك</a>
+                <a href="https://api.whatsapp.com/send/?phone=201280058361" class="hover:text-white" target="_blank">واتساب</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Audio Player -->
+    <audio id="background-music" loop autoplay>
+        <source src="الدخان.m4a" type="audio/mpeg">
+        متصفحك لا يدعم تشغيل الصوت.
+    </audio>
+
+    <script>
+        // JavaScript for mobile menu toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu on link click
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Background Music Controller
+        const backgroundMusic = document.getElementById('background-music');
+        const musicState = localStorage.getItem('musicState');
+        
+        // Set initial volume
+        backgroundMusic.volume = 0.3;
+        
+        // Check if music was playing before
+        if (musicState === 'playing') {
+            // Some browsers require user interaction before playing
+            document.addEventListener('click', function playMusicOnce() {
+                backgroundMusic.play().catch(e => console.log('Auto-play prevented:', e));
+                document.removeEventListener('click', playMusicOnce);
+            }, { once: true });
+        }
+        
+        // Save music state when page unloads
+        window.addEventListener('beforeunload', () => {
+            localStorage.setItem('musicState', backgroundMusic.paused ? 'paused' : 'playing');
+        });
+        
+        // Handle page visibility changes
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                // Page is hidden
+                localStorage.setItem('musicState', backgroundMusic.paused ? 'paused' : 'playing');
+            } else {
+                // Page is visible
+                if (localStorage.getItem('musicState') === 'playing') {
+                    backgroundMusic.play().catch(e => console.log('Auto-play prevented:', e));
+                }
+            }
+        });
+        
+        // Audio toggle button functionality
+        const audioToggle = document.getElementById('audio-toggle');
+        const audioOnIcon = document.getElementById('audio-on');
+        const audioOffIcon = document.getElementById('audio-off');
+        
+        // Set initial button state based on music state
+        if (musicState === 'paused') {
+            audioOnIcon.classList.add('hidden');
+            audioOffIcon.classList.remove('hidden');
+        }
+        
+        audioToggle.addEventListener('click', () => {
+            if (backgroundMusic.paused) {
+                backgroundMusic.play().catch(e => console.log('Play failed:', e));
+                audioOnIcon.classList.remove('hidden');
+                audioOffIcon.classList.add('hidden');
+                localStorage.setItem('musicState', 'playing');
+            } else {
+                backgroundMusic.pause();
+                audioOnIcon.classList.add('hidden');
+                audioOffIcon.classList.remove('hidden');
+                localStorage.setItem('musicState', 'paused');
+            }
+        });
+    </script>
+
+</body>
+</html>
